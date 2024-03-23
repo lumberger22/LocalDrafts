@@ -2,7 +2,11 @@
 
 Submitted by: **Lucas Umberger**
 
-This web app: **insert description**
+**This web app**
+
+ - Languages: JavaScript, HTML, CSS
+ - Framework: React
+ - API: Open Brewery DB -> [Documentation](https://www.openbrewerydb.org/documentation)
 
 Time spent: **X** hours spent in total
 
