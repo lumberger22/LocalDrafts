@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Card from "./Components/Card.jsx"
+import Header from "./Components/Header.jsx"
+import List from "./Components/List.jsx"
 import './App.css'
 
 function App() {
@@ -25,7 +28,17 @@ function App() {
 
   return (
     <>
-
+      <div className='whole--page'>
+        <Header/>
+        <div className='content--section'>
+          <div className='card--container'>
+            <Card/>
+            <Card/>
+            <Card/>
+          </div>
+          <List/>
+        </div>
+      </div>
     </>
   )
 }
