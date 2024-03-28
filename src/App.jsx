@@ -10,6 +10,7 @@ function App() {
   const [list, setList] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [currentRadio, setCurrentRadio] = useState("");
 
   useEffect(() => {
     const fetchBreweryData = async () => {
@@ -52,7 +53,10 @@ function App() {
     } else {
       setFilteredResults(list);
     }
-    console.log(filteredResults.length);
+  };
+
+  const filterByRadio = () => {
+
   };
 
   const haversineDistance = (coords1, coords2, isMiles = false) => {
@@ -120,6 +124,53 @@ function App() {
               placeholder="Search Name..."
               onChange={(e) => searchItems(e.target.value)}
             />
+            <div className='radio--filters'>
+              <h4>Current Filter: {currentRadio}</h4>
+              <ul>
+                <li>
+                  <label>
+                    <input type="radio" value="1" onChange={(e) => filterByRadio(e.target.value)} />
+                    Micro
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" value="nano" onChange={(e) => filterByRadio(e.target.value)} />
+                    Nano
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" value="regional" onChange={(e) => filterByRadio(e.target.value)} />
+                    Regional
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" value="brewpub" onChange={(e) => filterByRadio(e.target.value)} />
+                    Brewpub
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" value="large" onChange={(e) => filterByRadio(e.target.value)} />
+                    Large
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" value="planning" onChange={(e) => filterByRadio(e.target.value)} />
+                    Planning
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" value="bar" onChange={(e) => filterByRadio(e.target.value)} />
+                    Bar
+                  </label>
+                </li>
+              </ul>
+            </div>
             <hr />
             <div className='brewery--container'>
               {searchInput.length > 0 ? (
