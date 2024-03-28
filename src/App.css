@@ -2,7 +2,22 @@
   body {
     margin: 0;
     padding: 0;
+    color: black;
+  }
+
+  .whole--page {
     display: flex;
+    flex-direction: row;
+  }
+
+  #search--bar {
+    height: 20px;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
   }
 
 /* Global CSS End */
@@ -15,29 +30,103 @@
   text-align: left;
   background-color: rgb(198, 198, 198);
   width: 20vw;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   padding: 0px 10px;
   flex-wrap: wrap;
   overflow: auto;
   flex-shrink: 1;
   min-width: fit-content;
 }
+
 .header--title--container {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
 }
 
 .header--title--icon{
   width: 100px;
 }
 
-.header--title {
-
-}
-
-.header--option {
-
-}
-
 /* Header CSS End */
+
+/* Brewery Data Section Styling */
+
+.content--section {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  padding: 20px 100px;
+}
+
+.card--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content--head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.brewery--container {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.brewery--data {
+}
+
+/* Brewery Data CSS Ends */
+
+/* Card CSS Starts */
+.card {
+  display: flex;
+  border: 1px solid black;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  text-align: left;
+  padding: 0px 5px;
+  min-width: 200px;
+  width: 800px;
+  line-height: 7px;
+}
+
+.card--title {
+
+}
+
+.card--info {
+
+}
+
+.card--link {
+
+}
+
+/* Card CSS Ends */
+
+/* Map CSS Start */
+
+/* Map CSS Ends */
+
+.summary--card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pin-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: red;
+  position: fixed;
+}
