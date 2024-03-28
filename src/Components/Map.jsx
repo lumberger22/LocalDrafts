@@ -8,8 +8,8 @@ const Map = ({ lat, long, list, filtered }) => {
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   const mapContainerStyle = {
-    width: '45vw',
-    height: '33vh',
+    width: '40vw',
+    height: '35vh',
   };
 
   const center = {
@@ -42,7 +42,7 @@ const Map = ({ lat, long, list, filtered }) => {
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={10}
+        zoom={9}
         center={center}
       >
         {filtered.length > 0 ? (
@@ -60,7 +60,7 @@ const Map = ({ lat, long, list, filtered }) => {
             onCloseClick={() => setSelectedMarker(null)}
           >
             <div>
-              <p>{selectedMarker.name}</p>
+              <a className='map--marker--link' href={selectedMarker.website_url} target='_blank'>{selectedMarker.name}</a>
             </div>
           </InfoWindow>
         )}

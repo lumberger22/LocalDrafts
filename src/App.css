@@ -56,7 +56,8 @@
 .content--section {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  justify-content: flex-start;
+  gap: 10px;
   width: 100%;
   padding: 20px 100px;
 }
@@ -64,7 +65,7 @@
 .card--container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .content--head {
@@ -113,12 +114,14 @@
 /* Card CSS Ends */
 
 /* Map CSS Start */
+.map--marker--link {
 
+}
 /* Map CSS Ends */
 
 .summary--card {
   display: flex;
-  flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
 }
