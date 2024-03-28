@@ -10,7 +10,7 @@ function App() {
   const [list, setList] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [currentRadio, setCurrentRadio] = useState("");
+  const [selectedTypes, setSelectedTypes] = useState([]);
 
   useEffect(() => {
     const fetchBreweryData = async () => {
@@ -19,6 +19,7 @@ function App() {
       );
       const json = await response.json();
       setList(json);
+      setFilteredResults(json);
       console.log(json);
     };
   
@@ -26,6 +27,10 @@ function App() {
       fetchBreweryData().catch(console.error);
     }
   }, [latitude, longitude]);
+
+  useEffect(() => {
+    filterBreweries();
+  }, [list, searchInput, selectedTypes]);
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success, error);
@@ -43,20 +48,28 @@ function App() {
     console.log("Unable to retrieve your location");
   }
 
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue);
-    if (searchValue !== "") {
-      const filteredData = list.filter((brewery) =>
-        brewery?.name?.toLowerCase().includes(searchValue.toLowerCase())
+  const filterBreweries = () => {
+    let result = list;
+  
+    if (searchInput) {
+      result = result.filter((brewery) =>
+        brewery?.name?.toLowerCase().includes(searchInput.toLowerCase())
       );
-      setFilteredResults(filteredData);
-    } else {
-      setFilteredResults(list);
     }
+  
+    if (selectedTypes.length > 0) {
+      result = result.filter((brewery) =>
+        selectedTypes.includes(brewery.brewery_type)
+      );
+    }
+    
+    console.log('Filtering by types:', selectedTypes);
+    console.log('Filtered Results:', result);
+    setFilteredResults(result);
   };
 
-  const filterByRadio = () => {
-
+  const searchItems = (searchValue) => {
+    setSearchInput(searchValue);
   };
 
   const haversineDistance = (coords1, coords2, isMiles = false) => {
@@ -88,7 +101,19 @@ function App() {
   if (list.length  > 0) {
     point2 = { lat: list[0].latitude, lng: list[0].longitude };
   }
-  
+
+  const toggleFilter = (value) => {
+    setSelectedTypes(current => {
+      // Check if the value is already selected
+      if (current.includes(value)) {
+        // Remove it if it was already selected
+        return current.filter(type => type !== value);
+      } else {
+        // Add it if it wasn't selected
+        return [...current, value];
+      }
+    });
+  }; 
 
   return (
     <>
@@ -99,9 +124,13 @@ function App() {
             <div className='card--container'>
               <div className='summary--card'>
                 <h2 className='summary-info'>
-                  {searchInput.length > 0 ? filteredResults.length : list.length}
+                  {filteredResults.length}  
                 </h2>
-                <h2 className='summary--label'>Breweries Shown</h2>
+                {filteredResults.length === 1 ? (
+                  <h2 className='summary--label'>Brewery Shown</h2>
+                ) : (
+                  <h2 className='summary--label'>Breweries Shown</h2>
+                )}
               </div>
               <div className='summary--card'> 
                   {latitude != "" && longitude != "" && list.length > 0 ? (
@@ -115,80 +144,42 @@ function App() {
               null
             )} 
           </div>
-                     
           <div className='brewery--data'>
             <h1>Breweries Near Me</h1>
-            <input
-              id='search--bar'
-              type="text"
-              placeholder="Search Name..."
-              onChange={(e) => searchItems(e.target.value)}
-            />
-            <div className='radio--filters'>
-              <h4>Current Filter: {currentRadio}</h4>
-              <ul>
-                <li>
-                  <label>
-                    <input type="radio" value="1" onChange={(e) => filterByRadio(e.target.value)} />
-                    Micro
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" value="nano" onChange={(e) => filterByRadio(e.target.value)} />
-                    Nano
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" value="regional" onChange={(e) => filterByRadio(e.target.value)} />
-                    Regional
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" value="brewpub" onChange={(e) => filterByRadio(e.target.value)} />
-                    Brewpub
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" value="large" onChange={(e) => filterByRadio(e.target.value)} />
-                    Large
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" value="planning" onChange={(e) => filterByRadio(e.target.value)} />
-                    Planning
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" value="bar" onChange={(e) => filterByRadio(e.target.value)} />
-                    Bar
-                  </label>
-                </li>
-              </ul>
+            <div className='search--features'>
+              <input
+                id='search--bar'
+                type="text"
+                placeholder="Search Name..."
+                onChange={(e) => searchItems(e.target.value)}
+              />
+              <div className='radio--filters'>
+                <h4>Filter Type: </h4>
+                <ul>
+                  {['micro', 'nano', 'regional', 'brewpub', 'large', 'planning', 'bar'].map((type) => (
+                    <li key={type}>
+                      <label>
+                        <input
+                          type="checkbox"
+                          value={type}
+                          checked={selectedTypes.includes(type)}
+                          onChange={() => toggleFilter(type)}
+                        />
+                        {type.charAt(0).toUpperCase() + type.slice(1)}
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <hr />
             <div className='brewery--container'>
-              {searchInput.length > 0 ? (
-                <>
-                  {filteredResults.length > 0 ? (
-                    filteredResults.map((brewery, index) => (
-                      <Card key={index} brewery={brewery} />
-                    ))
-                  ) : (
-                    <p>No results found.</p>
-                  )}
-                </>
-              ) : list.length > 0 ? (
-                list.map((brewery, index) => (
+              {filteredResults.length > 0 ? (
+                filteredResults.map((brewery, index) => (
                   <Card key={index} brewery={brewery} />
                 ))
               ) : (
-                <p>Enable location accessibility to use Local Drafts</p>
+                <p>{list.length > 0 ? "No results found." : "Enable location accessibility to use Local Drafts"}</p>
               )}
             </div>
           </div>

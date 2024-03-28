@@ -66,11 +66,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 300px;
 }
 
 .content--head {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 50px;
+  width: auto;
 }
 
 .brewery--container {
@@ -132,4 +135,29 @@
   height: 20px;
   color: red;
   position: fixed;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.radio--filters {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.search--features {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 50px;
 }

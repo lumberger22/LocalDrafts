@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { GoogleMap, useLoadScript, InfoWindow, Marker } from '@react-google-maps/api';
 
 const API_KEY = import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY;
+const libraries = ['places'];
 
 const Map = ({ lat, long, list, filtered }) => {
 
-  const libraries = ['places'];
+  
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   const mapContainerStyle = {
@@ -46,6 +47,7 @@ const Map = ({ lat, long, list, filtered }) => {
         mapContainerStyle={mapContainerStyle}
         zoom={9}
         center={center}
+        libraries={libraries}
       >
         {filtered.length > 0 ? (
           filtered.map((loc, index) => (
