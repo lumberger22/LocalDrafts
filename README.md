@@ -31,19 +31,15 @@ The following **additional** features are implemented:
 
 * [x] All filtered breweries are displayed on a map and can be interacted with
 * [x] Brewery Cards and map markers are linked to brewery website if provided in API call
+* [x] Header sidebar provides navigational links to parts of the page
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![](LocalDrafts_walkthrough.gif)
 
-<!-- Replace this with whatever GIF tool you used! -->
 GIF created with ScreenToGif
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
 
 ## Challenges
 
