@@ -10,9 +10,15 @@ export default function Header() {
                         <h1 className="header--title">LocalDrafts</h1> 
                 </div>
                 <br/>
-                <h2 className="header--option">Dashboard</h2>
-                <h2 className="header--option">Search</h2>
-                <h2 className="header--option">About</h2>
+                <a className='header--link' href="#title">
+                    <h2 className="header--option">Home</h2>
+                </a>
+                <a className='header--link' href="#about">
+                    <h2 className="header--option">About</h2>
+                </a>
+                <a className='header--link' href="#content">
+                    <h2 className="header--option">Dashboard</h2>
+                </a>
             </div>            
         </>
     )

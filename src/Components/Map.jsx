@@ -11,7 +11,7 @@ const Map = ({ lat, long, list, filtered }) => {
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   const mapContainerStyle = {
-    width: '40vw',
+    width: '35vw',
     height: '35vh',
   };
 

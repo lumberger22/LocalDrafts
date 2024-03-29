@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Card from "./Components/Card.jsx"
 import Header from "./Components/Header.jsx"
 import Map from "./Components/Map.jsx"
+import About from "./Components/About.jsx"
 import './App.css'
 
 function App() {
@@ -119,8 +120,11 @@ function App() {
     <>
       <div className='whole--page'>
         <Header />
-        <div className='content--section'>
-          <div className='content--head'>
+        <div className='content--section' id='title'>
+          <h1 className='content--head--title'>Local Drafts</h1>
+          <h2 className='content--head--subtitle'>Breweries Near Me</h2>
+          <About />
+          <div className='content--head' id='content'>
             <div className='card--container'>
               <div className='summary--card'>
                 <h2 className='summary-info'>
@@ -139,13 +143,12 @@ function App() {
               </div>
             </div>
             {latitude !== ""  && list.length > 0 ? (
-              <Map lat={latitude} list={list} filtered={filteredResults} long={longitude}/>
+              <Map className='map' lat={latitude} list={list} filtered={filteredResults} long={longitude}/>
             ): (
               null
             )} 
           </div>
           <div className='brewery--data'>
-            <h1>Breweries Near Me</h1>
             <div className='search--features'>
               <input
                 id='search--bar'
@@ -161,6 +164,7 @@ function App() {
                       <label>
                         <input
                           type="checkbox"
+                          className='checkbox'
                           value={type}
                           checked={selectedTypes.includes(type)}
                           onChange={() => toggleFilter(type)}
