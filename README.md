@@ -7,7 +7,7 @@ Submitted by: **Lucas Umberger**
  - Languages: JavaScript, HTML, CSS
  - Framework: React
  - APIs used:
-     - Open Brewery DB -> [Documentation](https://www.openbrewerydb.org/documentation)
+     - Open Brewery DB --> [Documentation](https://www.openbrewerydb.org/documentation)
      - Google Maps JS API --> [Documentation](https://developers.google.com/maps/documentation/javascript)
 
 Time spent: **16** hours spent in total
@@ -47,7 +47,8 @@ GIF created with ScreenToGif
 
 ## Challenges
 
-  - 
+  - One of the biggest challenges I had was getting the map to display on the screen with the markers. I originally was using a deprecated react-google-maps API because I did not know about the Google Maps Platform that has a JS Maps API. I then switched to it and was able to render the map successfully. I then had to figure out how to get the Markers on the screen and map through them. I was able to pass props to the map so that when it is updated in App.jsx, the map rerenders and markers update.
+  - Another challenge I had was with getting the filters to work on the list and filteredResults arrays. To get to the solution I decided on, the stucture went through several revisions that involved changing methods and adding different variables. I orignially was using the filtered results starting at zero and when a filter was changed I would put the filtered results into the array. This however caused errors with trying to load the filtered results when no results were found. I ended up starting with filteredResults being the full json, and trimming it down if a filter was changed.
 
 ## License
 
