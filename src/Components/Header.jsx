@@ -6,7 +6,7 @@ export default function Header() {
         <>
             <div className="header">
                 <div className="header--title--container">
-                        <img className="header--title--icon" src="/beer-icon.png" alt="Local Drafts Icon"/>
+                        <img className="header--title--icon" src="/public/beer-icon.png" alt="Local Drafts Icon"/>
                         <h1 className="header--title">LocalDrafts</h1> 
                 </div>
                 <br/>
