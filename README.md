@@ -2,51 +2,49 @@
 
 Submitted by: **Lucas Umberger**
 
-**This web app**
+**Local Drafts is an innovative web application designed for beer enthusiasts and casual drinkers alike, offering a dynamic and user-friendly platform to discover breweries in their immediate vicinity. By harnessing the power of location-based technology, Local Drafts displays a detailed map pinpointing nearby breweries, ranging from well-known establishments to hidden gems off the beaten path. The user can filter their results by name search or by brewery type.**
 
  - Languages: JavaScript, HTML, CSS
  - Framework: React
- - API: Open Brewery DB -> [Documentation](https://www.openbrewerydb.org/documentation)
+ - APIs used:
+     - Open Brewery DB --> [Documentation](https://www.openbrewerydb.org/documentation)
+     - Google Maps JS API --> [Documentation](https://developers.google.com/maps/documentation/javascript)
 
-Time spent: **X** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Features
 
 The following **required** functionality is completed:
 
-- [ ] **The list displays a list of data fetched using an API call**
-- [ ] **Data uses the useEffect React hook and async/await syntax**
-- [ ] **The app dashboard includes at least three summary statistics about the data such as**
-- [ ] *insert details*
-- [ ] **A search bar allows the user to search for an item in the fetched data**
-- [ ] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [x] **The list displays a list of data fetched using an API call**
+- [x] **Data uses the useEffect React hook and async/await syntax**
+- [x] **The app dashboard includes at least three summary statistics about the data such as nearest brewery, breweries shown, and a map pinpointing breweries shown based on latitude and   longitude**
+- [x] **A search bar allows the user to search for an item in the fetched data**
+- [x] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
 
 The following **optional** features are implemented:
 
-- [ ] Multiple filters can be applied simultaneously
-- [ ] Filters use different input types such as a text input, a selection, or a slider
-- [ ] The user can enter specific bounds for filter values
+- [x] Multiple filters can be applied simultaneously
+- [x] Filters use different input types such as a text input, a selection, or a slider
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [x] All filtered breweries are displayed on a map and can be interacted with
+* [x] Brewery Cards and map markers are linked to brewery website if provided in API call
+* [x] Header sidebar provides navigational links to parts of the page
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![](LocalDrafts_walkthrough.gif)
 
-<!-- Replace this with whatever GIF tool you used! -->
 GIF created with ScreenToGif
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
 
 ## Challenges
 
-  - 
+  - One of the biggest challenges I had was getting the map to display on the screen with the markers. I originally was using a deprecated react-google-maps API because I did not know about the Google Maps Platform that has a JS Maps API. I then switched to it and was able to render the map successfully. I then had to figure out how to get the Markers on the screen and map through them. I was able to pass props to the map so that when it is updated in App.jsx, the map rerenders and markers update.
+  - Another challenge I had was with getting the filters to work on the list and filteredResults arrays. To get to the solution I decided on, the stucture went through several revisions that involved changing methods and adding different variables. I orignially was using the filtered results starting at zero and when a filter was changed I would put the filtered results into the array. This however caused errors with trying to load the filtered results when no results were found. I ended up starting with filteredResults being the full json, and trimming it down if a filter was changed.
 
 ## License
 
