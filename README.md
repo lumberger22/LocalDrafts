@@ -10,7 +10,7 @@ Submitted by: **Lucas Umberger**
      - Open Brewery DB --> [Documentation](https://www.openbrewerydb.org/documentation)
      - Google Maps JS API --> [Documentation](https://developers.google.com/maps/documentation/javascript)
 
-Time spent: **16** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Features
 
