@@ -22,12 +22,16 @@
 
   .whole--page {
     display: flex;
-    flex-direction: row;
-    background-color: var(--accent);
+    flex-direction: column;
     background-image: url("/public/pub_image.jpg");
     background-attachment: fixed;
     background-position: 0% 30%;
     background-size: 2100px;
+  }
+
+  .non-footer {
+    display: flex;
+    flex-direction: row;
   }
 
   #search--bar {
@@ -273,3 +277,21 @@ input[type=checkbox]{
 }
 
 /* About CSS Ends */
+
+/* Brewery Detail CSS Starts */
+.detail--page {
+  color: black;
+  display: flex;
+}
+
+/* Brewery Detail CSS Ends */
+
+/* Footer CSS Starts */
+.footer--section {
+  height: 40vh;
+  width: auto;
+  color: var(--accent);
+  background-color: var(--accent);
+}
+
+/* Footer CSS Ends */
