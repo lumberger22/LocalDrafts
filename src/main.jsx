@@ -8,19 +8,8 @@ import DetailView from '/routes/DetailView';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-    <Route index={false} path="/breweryDetails/:name" element={<DetailView />} />
-        <Route index={true} element={<App />} />
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
-              <Link style={{ color: "white" }} to="/">
-                Back to Home
-              </Link>
-            </main>
-          }
-        />
+      <Route index={false} path="/LocalDrafts/breweryDetails/:id" element={<DetailView />} />
+      <Route path="/LocalDrafts/" element={<App />} />
     </Routes>
   </BrowserRouter>
 )
