@@ -119,75 +119,81 @@ function App() {
   return (
     <>
       <div className='whole--page'>
-        <Header />
-        <div className='content--section' id='title'>
-          <h1 className='content--head--title'>Local Drafts</h1>
-          <h2 className='content--head--subtitle'>Breweries Near Me</h2>
-          <About />
-          <div className='content--head' id='content'>
-            <div className='card--container'>
-              <div className='summary--card'>
-                <h2 className='summary-info'>
-                  {filteredResults.length}  
-                </h2>
-                {filteredResults.length === 1 ? (
-                  <h2 className='summary--label'>Brewery Shown</h2>
+        <div className='non-footer'>
+          <Header />
+          <div className='content--section' id='title'>
+            <h1 className='content--head--title'>Local Drafts</h1>
+            <h2 className='content--head--subtitle'>Breweries Near Me</h2>
+            <About />
+            <div className='content--head' id='content'>
+              <div className='card--container'>
+                <div className='summary--card'>
+                  <h2 className='summary-info'>
+                    {filteredResults.length}  
+                  </h2>
+                  {filteredResults.length === 1 ? (
+                    <h2 className='summary--label'>Brewery Shown</h2>
+                  ) : (
+                    <h2 className='summary--label'>Breweries Shown</h2>
+                  )}
+                </div>
+                <div className='summary--card'> 
+                    {latitude != "" && longitude != "" && list.length > 0 ? (
+                      <h2 className='summary--label'>Closest Brewery: {haversineDistance(point1, point2, true).toFixed(2)} Miles</h2>
+                    ) : null }
+                </div>
+              </div>
+              {latitude !== ""  && list.length > 0 ? (
+                <Map className='map' lat={latitude} list={list} filtered={filteredResults} long={longitude}/>
+              ): (
+                null
+              )} 
+            </div>
+            <div className='brewery--data'>
+              <div className='search--features'>
+                <input
+                  id='search--bar'
+                  type="text"
+                  placeholder="Search Name..."
+                  onChange={(e) => searchItems(e.target.value)}
+                />
+                <div className='radio--filters'>
+                  <h4>Filter Type: </h4>
+                  <ul>
+                    {['micro', 'nano', 'regional', 'brewpub', 'large', 'planning', 'bar'].map((type) => (
+                      <li key={type}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            className='checkbox'
+                            value={type}
+                            checked={selectedTypes.includes(type)}
+                            onChange={() => toggleFilter(type)}
+                          />
+                          {type.charAt(0).toUpperCase() + type.slice(1)}
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <hr />
+              <div className='brewery--container'>
+                {filteredResults.length > 0 ? (
+                  filteredResults.map((brewery, index) => (
+                    <Card key={index} brewery={brewery} />
+                  ))
                 ) : (
-                  <h2 className='summary--label'>Breweries Shown</h2>
+                  <p>{list.length > 0 ? "No results found." : "Enable location accessibility to use Local Drafts"}</p>
                 )}
               </div>
-              <div className='summary--card'> 
-                  {latitude != "" && longitude != "" && list.length > 0 ? (
-                    <h2 className='summary--label'>Closest Brewery: {haversineDistance(point1, point2, true).toFixed(2)} Miles</h2>
-                  ) : null }
-              </div>
-            </div>
-            {latitude !== ""  && list.length > 0 ? (
-              <Map className='map' lat={latitude} list={list} filtered={filteredResults} long={longitude}/>
-            ): (
-              null
-            )} 
-          </div>
-          <div className='brewery--data'>
-            <div className='search--features'>
-              <input
-                id='search--bar'
-                type="text"
-                placeholder="Search Name..."
-                onChange={(e) => searchItems(e.target.value)}
-              />
-              <div className='radio--filters'>
-                <h4>Filter Type: </h4>
-                <ul>
-                  {['micro', 'nano', 'regional', 'brewpub', 'large', 'planning', 'bar'].map((type) => (
-                    <li key={type}>
-                      <label>
-                        <input
-                          type="checkbox"
-                          className='checkbox'
-                          value={type}
-                          checked={selectedTypes.includes(type)}
-                          onChange={() => toggleFilter(type)}
-                        />
-                        {type.charAt(0).toUpperCase() + type.slice(1)}
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <hr />
-            <div className='brewery--container'>
-              {filteredResults.length > 0 ? (
-                filteredResults.map((brewery, index) => (
-                  <Card key={index} brewery={brewery} />
-                ))
-              ) : (
-                <p>{list.length > 0 ? "No results found." : "Enable location accessibility to use Local Drafts"}</p>
-              )}
             </div>
           </div>
         </div>
+        <footer className='footer--section'>
+            <h3>Local Drafts</h3>
+            <h3>Created By Lucas Umberger</h3>
+        </footer>
       </div>
     </>
   )
