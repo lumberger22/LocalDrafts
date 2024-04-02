@@ -13,8 +13,6 @@ export default function BreweryDetail() {
           );
 
           const descripJson = await description.json();
-          console.log(descripJson)
-          console.log(descripJson.name);
           setCurrentBrewery(descripJson);
         };
     
