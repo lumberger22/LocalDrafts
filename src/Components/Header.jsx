@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import Icon from "/beer-icon.png";
 
 export default function Header() {
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -13,9 +15,12 @@ export default function Header() {
                 </div>
                 <br/>
                 {window.location.pathname !== "/LocalDrafts/" ? (
-                    <Link className='header--link' to='/LocalDrafts/'>
+                    // <Link className='header--link' to='/LocalDrafts/#content'>
+                    //     <h2 className="header--option">Go Back</h2>
+                    // </Link>
+                    <button className='header--link go--back' onClick={() => navigate(-1)}>
                         <h2 className="header--option">Go Back</h2>
-                    </Link>
+                    </button>
                 ) : (
                     <>
                         <a className='header--link' href="#title">
