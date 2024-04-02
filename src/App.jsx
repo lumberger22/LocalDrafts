@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import Card from "./Components/Card.jsx"
 import Header from "./Components/Header.jsx"
 import Map from "./Components/Map.jsx"
@@ -10,9 +10,17 @@ function App() {
   const [longitude, setLongitude] = useState("");
   const [list, setList] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
-  const [selectedTypes, setSelectedTypes] = useState([]);
+  const [searchInput, setSearchInput] = useState(sessionStorage.getItem('searchInput') || "");
+  const [selectedTypes, setSelectedTypes] = useState(JSON.parse(sessionStorage.getItem('selectedTypes')) || []);
 
+  useEffect(() => {
+    sessionStorage.setItem('searchInput', searchInput);
+  }, [searchInput]);
+
+  useEffect(() => {
+    sessionStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
+  }, [selectedTypes]);
+  
   useEffect(() => {
     const fetchBreweryData = async () => {
       const response = await fetch(
