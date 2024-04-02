@@ -288,10 +288,12 @@ input[type=checkbox]{
 
 /* Footer CSS Starts */
 .footer--section {
-  height: 40vh;
+  height: 20vh;
   width: auto;
-  color: var(--accent);
   background-color: var(--accent);
+  color: var(--secondary);
+  padding-left: 5vw;
+  padding-top: 5vh;
 }
 
 /* Footer CSS Ends */
