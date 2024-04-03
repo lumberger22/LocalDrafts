@@ -3,10 +3,14 @@ import Header from "../src/Components/Header";
 
 const DetailView = () => {
   return (
-    <div className="detail--page">
-      <Header />
-      <BreweryDetail />
-    </div>
+    <>
+      <div className="detail--page">
+        <Header />
+        <div className="detail--content">
+          <BreweryDetail /> 
+        </div>
+      </div>
+    </>
   );
 };
 
