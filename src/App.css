@@ -96,6 +96,16 @@
   margin-left: 20px;
   text-shadow: 1px 1px 2px black;
 }
+
+.go--back {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--accent);
+  margin-left: 20px;
+  text-shadow: 1px 1px 2px black;
+  font-size: 16px;
+}
 /* Header CSS End */
 
 /* Brewery Data Section Styling */
@@ -282,6 +292,65 @@ input[type=checkbox]{
 .detail--page {
   color: black;
   display: flex;
+  background-image: url("/public/pub_image.jpg");
+  background-attachment: fixed;
+  background-position: 0% 30%;
+  background-size: 2100px;
+}
+
+.detail--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.detail--card {
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  background-color: var(--secondary);
+  margin: 0px 20px;
+  opacity: 0.9;
+  border-radius: 8px;
+  color: var(--accent);
+  min-width: 40vw;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 15px;
+}
+
+.detail--address {
+  color: var(--text);
+  margin-top: 0px;
+}
+
+.detail--type {
+  color: var(--primary);
+}
+
+.detail--type--definition {
+  width: 80%;
+}
+
+.detail--website {
+  transition: transform .2s;
+  margin-left: 15px;
+}
+
+.detail--website:hover {
+  transform: scale(1.1);
+}
+
+.detail--link {
+  color: var(--text);
+}
+
+.detail--website--section {
+  display: flex;
+  flex-direction: row;
 }
 
 /* Brewery Detail CSS Ends */
