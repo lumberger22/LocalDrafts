@@ -168,7 +168,7 @@ function App() {
                 <div className='radio--filters'>
                   <h4>Filter Type: </h4>
                   <ul>
-                    {['micro', 'nano', 'regional', 'brewpub', 'large', 'planning', 'bar'].map((type) => (
+                    {['micro', 'nano', 'regional', 'brewpub', 'planning'].map((type) => (
                       <li key={type}>
                         <label>
                           <input
