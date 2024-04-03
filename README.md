@@ -1,4 +1,4 @@
-# Web Development Project 5 - LocalDrafts
+# Web Development Project 6 - LocalDrafts
 
 ## Check it out here! -> [Local Drafts](https://lumberger22.github.io/LocalDrafts/)
 
