@@ -63,9 +63,7 @@ const Map = ({ lat, long, list, filtered }) => {
             position={{ lat: Number(selectedMarker.lat), lng: Number(selectedMarker.lng) }}
             onCloseClick={() => setSelectedMarker(null)}
           >
-            <div>
-              <a className='map--marker--link' href={selectedMarker.website_url} target='_blank'>{selectedMarker.name}</a>
-            </div>
+            <p>{selectedMarker.name}</p>
           </InfoWindow>
         )}
       </GoogleMap>
