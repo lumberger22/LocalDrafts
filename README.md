@@ -42,7 +42,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user features:
 
-![](LocalDrafts_walkthrough.gif)
+![](LocalDrafts_walkthrough2.gif)
 
 GIF created with ScreenToGif
 
